@@ -1,0 +1,19 @@
+'''
+Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+'''
+
+'''
+The overall time complexity of the code is O(n*m*log(m))
+'''
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        result = set([''.join(sorted(i)) for i in strs])
+        answer = dict()
+        for i in result:
+            answer[i] = []
+        for j in strs:
+            answer[''.join(sorted(j))].append(j)
+        return list(answer.values())
+         
