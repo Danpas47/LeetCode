@@ -1,0 +1,15 @@
+'''
+Given an input string s, reverse the order of the words.
+'''
+'''
+Time complexity of this solution is O(n)
+'''
+
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        result=[]
+        for i in s.split(' '):
+            if i !='' and i!=' ':
+                result.append(i)
+        return ' '.join(result[::-1])
+
