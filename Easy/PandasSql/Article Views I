@@ -1,0 +1,14 @@
+'''
+Write a solution to find all the authors that viewed at least one of their own articles.
+Return the result table sorted by id in ascending order.
+'''
+
+
+import pandas as pd
+
+def article_views(views: pd.DataFrame) -> pd.DataFrame:
+    answer = pd.DataFrame()
+    answer['id'] = views[(views.author_id == views.viewer_id)].author_id
+    answer.sort_values(by='id',inplace=True)
+    answer.drop_duplicates(subset='id',inplace=True)
+    return answer
