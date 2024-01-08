@@ -1,0 +1,14 @@
+'''
+Given two strings s and t, determine if they are isomorphic.
+'''
+
+
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        result={}
+        for i in range(len(s)):
+            if (s[i] in result.keys() and result[s[i]] != t[i]) or (s[i] not in result.keys() and t[i] in result.values()):
+                return False
+            else:
+                result[s[i]]=t[i]
+        return True
