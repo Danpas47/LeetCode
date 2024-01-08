@@ -1,0 +1,14 @@
+'''
+Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, 
+find two numbers such that they add up to a specific target number.
+'''
+
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        seen = {}
+        for i in range(len(numbers)):
+            diff = target - numbers[i]
+            if diff in seen:
+                return [seen[diff]+1, i+1]
+            else:
+                seen[numbers[i]] = i
