@@ -1,0 +1,19 @@
+'''
+Given the array points, return the minimum number of arrows that must be shot to burst all balloons.
+'''
+
+'''
+time complexity of the code is O(nlogn)
+'''
+
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -> int:
+        result=0
+        points = sorted(points,key=lambda x:x[1])
+        prev=points[0][1]
+        for i in range(1,len(points)):
+            if points[i][0]<=prev and points[i][1]>=prev:
+                result+=1
+            else:
+                prev=points[i][1]
+        return len(points)-result
