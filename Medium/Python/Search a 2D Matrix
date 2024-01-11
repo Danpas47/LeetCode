@@ -1,0 +1,10 @@
+'''
+Given an integer target, return true if target is in matrix or false otherwise.
+'''
+'''
+Time complexity of the code is O(n)
+'''
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        return [x for l in matrix for x in l if x==target]
