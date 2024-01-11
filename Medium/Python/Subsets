@@ -1,0 +1,16 @@
+'''
+Given an integer array nums of unique elements, return all possible 
+subsets
+'''
+
+import itertools
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]: 
+        def amm(nums):
+            if len(nums) == 0:  
+                return [[]]  
+            x = amm(nums[:-1])  
+            return x + [[nums[-1]] + y for y in x]    
+
+        result = amm(nums)  
+        return result
