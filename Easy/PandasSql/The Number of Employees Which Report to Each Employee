@@ -1,0 +1,14 @@
+'''
+Write a solution to report the ids and the names of all managers,
+the number of employees who report directly to them, and the average age of the reports rounded to the nearest integer.
+
+Return the result table ordered by employee_id.
+'''
+
+
+select e1.employee_id , e1.name , count(e2.employee_id) reports_count , round(avg(e2.age)) average_age
+from Employees e1 , Employees e2
+where e1.employee_id = e2.reports_to
+group by 1
+having reports_count > 0
+order by 1
