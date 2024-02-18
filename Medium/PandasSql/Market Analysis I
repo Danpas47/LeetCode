@@ -1,0 +1,13 @@
+'''
+Write a solution to find for each user, the join date and the number of orders they made as a buyer in 2019.
+
+Return the result table in any order.
+'''
+
+select u.user_id  buyer_id, u.join_date ,
+count(buyer_id) orders_in_2019
+from Users u
+left join Orders o  
+on u.user_id=o.buyer_id
+and year(o.order_date)=2019
+group by 1
