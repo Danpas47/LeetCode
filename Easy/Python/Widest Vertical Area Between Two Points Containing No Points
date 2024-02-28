@@ -1,0 +1,16 @@
+'''
+Given n points on a 2D plane where points[i] = [xi, yi], 
+Return the widest vertical area between two points such that no points are inside the area.
+'''
+
+class Solution:
+    def maxWidthOfVerticalArea(self, points: List[List[int]]) -> int:
+        result=[]
+        answer = 0
+        for i in points:
+            result.append(i[0])
+        sorting = sorted(result)
+        for j in range(len(sorting)-1):
+            if sorting[j+1]-sorting[j]>answer:
+                answer = sorting[j+1]-sorting[j]
+        return answer
