@@ -1,0 +1,36 @@
+'''
+You are given a 0-indexed m x n binary matrix grid.
+
+A 0-indexed m x n difference matrix diff is created with the following procedure:
+
+Let the number of ones in the ith row be onesRowi.
+Let the number of ones in the jth column be onesColj.
+Let the number of zeros in the ith row be zerosRowi.
+Let the number of zeros in the jth column be zerosColj.
+diff[i][j] = onesRowi + onesColj - zerosRowi - zerosColj
+Return the difference matrix diff.
+'''
+
+class Solution:
+    def onesMinusZeros(self, grid: List[List[int]]) -> List[List[int]]:
+        onesRow = []
+        Ocol = 0
+        zeroCol=[]
+        answer=[]
+        b=[]
+        for i in grid:
+            onesRow.append(sum(i)-(len(i)-sum(i)))
+
+        for k in range(len(grid[0])):
+            for j in range(len(grid)):
+                if grid[j][k]==1:
+                    Ocol+=1
+            zeroCol.append(Ocol-(len(grid)-Ocol))
+            Ocol = 0
+
+        for m in range(len(onesRow)):
+            for y in range(len(zeroCol)):
+                b.append(zeroCol[y]+onesRow[m])
+            answer.append(b)
+            b=[]
+        return answer
