@@ -1,0 +1,23 @@
+'''
+Consider calculating the following values:
+
+The number of indices i such that 0 <= i < n and nums1[i] occurs at least once in nums2.
+The number of indices i such that 0 <= i < m and nums2[i] occurs at least once in nums1.
+Return an integer array answer of size 2 containing the two values in the above order.
+'''
+class Solution:
+    def findIntersectionValues(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        result=[]
+        counter=0
+        for i in range(0,len(nums1)):
+            if nums1[i] in nums2:
+                counter+=1
+        result.append(counter)
+        counter=0
+        for j in range(0,len(nums2)):
+            if nums2[j] in nums1:
+                counter+=1
+        result.append(counter)
+        if result:
+            return result
+        return [0,0]
